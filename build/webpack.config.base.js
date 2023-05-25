@@ -93,7 +93,13 @@ module.exports = {
 										modules: false,
 									},
 								],
-								"@babel/preset-react",
+								"@babel/preset-typescript",
+								[
+									"@babel/preset-react",
+									{
+										runtime: "automatic",
+									},
+								],
 							],
 							plugins: isDev ? [require.resolve("react-refresh/babel")] : [],
 						},
