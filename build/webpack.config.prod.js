@@ -26,7 +26,9 @@ const plugins = [
 
 // report 配置
 if (process.env.npm_config_report === "true") {
-	plugins.push(new BundleAnalyzerPlugin());
+	plugins.push(
+		new BundleAnalyzerPlugin({ analyzerPort: 8080, generateStatsFile: false }),
+	);
 }
 
 const prodConfig = {

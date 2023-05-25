@@ -174,4 +174,17 @@
 ## types
 
 + `@types/react-dom`
++ `@types/react`
++ `@types/react-redux`
++ `@types/react-router-dom`
 
+
+## webpack [Node Interface](https://webpack.js.org/api/node/#installation)
++ wepack 支持`Command Line Interface`模式(命令)和 `Node Interface`模式(代码),通过`webpack`的`Node Interface`,可以对`webpack`运行进行更为精细的操作
+### 1. `Node Interface`可以用来优化的utils
++ `rimraf`[rimraf](https://github.com/isaacs/rimraf) 
+	`node`的删除文件的第三方库,当使用`webpack`进行`build`操作之前,预先删除之前残留的`dist`文件夹, `rimraf 5.0.1` 版本返回的是一个`Promsie`
++ `chalk`[chalk version](https://www.npmjs.com/package/chalk?activeTab=versions)
+	`node`的命令行美化工具,在命令行输出不同颜色的文字,`5.x`版本只支持es6的`import`语法,`4.x`才支持`CommonJs`导入语法
++ `ora`
+	语法支持类似于`chalk`,`6.x`版本支持`import`,`6.x`以及以下支持`require()`在终端中显示进度条和动画效果
