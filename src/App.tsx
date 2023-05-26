@@ -1,9 +1,7 @@
-import React from "react";
-
 import "./App.less";
 
 function App() {
-	return <>App </>;
+	return <>this is a App ReactJSX</>;
 }
 
 export default App;
