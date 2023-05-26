@@ -45,7 +45,7 @@ module.exports = {
 
 		// React Rules
 		"react/prop-types": 0, // 关闭对 PropTypes 的检查。
-		"react/react-in-jsx-scope": 1, // react18 中 jsx语法不再需要引入react
+		"react/react-in-jsx-scope": 0, // react18 中 jsx语法不再需要引入react
 
 		// Prettier Rules
 		"prettier/prettier": 2, // 将 Prettier 错误视为 ESLint 错误。
