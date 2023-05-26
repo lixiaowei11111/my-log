@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      -gh-pages  # 这里是你的主分支名称
+      - gh-pages  # 这里是你的主分支名称
 
 jobs:
   deploy:
