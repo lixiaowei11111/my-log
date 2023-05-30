@@ -20,6 +20,7 @@
 		"paths": {
 			"@": ["src"],
 			"@/*": ["src/*"],
+			"@VIEWS/*": ["src/views/*"],
 			"@API/*": ["src/api/*"],
 			"@COMPONENTS/*": ["src/components/*"],
 			"@UTILS/*": ["src/utils/*"],
