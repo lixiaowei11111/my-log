@@ -20,7 +20,7 @@ import {
 } from "react-router-dom";
 import ErrorBoundary from "@COMPONENTS/ErrorBoundary";
 
-import store from "@REDUX/index";
+import store from "@/redux/store";
 import routes from "@ROUTES/index";
 import App from "./App";
 

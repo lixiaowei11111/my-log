@@ -1,6 +1,8 @@
 import { Navigate, RouteObject } from "react-router-dom";
 
 import App from "@/App";
+import ReduxTest from "@VIEWS/PlayGround/ReduxTest";
+
 // 2. 使用 createBrowserRouter 创建
 const router: RouteObject[] = [
 	{
@@ -11,6 +13,16 @@ const router: RouteObject[] = [
 	{
 		path: "/app",
 		element: <App />,
+	},
+	{
+		path: "/playground",
+		element: <Navigate to="/playground/reduxTest"></Navigate>,
+		children: [
+			{
+				path: "/playground/reduxTest",
+				element: <ReduxTest />,
+			},
+		],
 	},
 ];
 // const extraRouteInfo: RouteObject = {
