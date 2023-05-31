@@ -12,7 +12,7 @@ const devServer = {
 	// publicPath: "/",
 	// webpack5 中 contentBase选项 被替换为 static选项
 	static: {
-		directory: path.join(__dirname, "../public"),
+		directory: path.join(__dirname, "../pulic"),
 		publicPath: "/",
 		watch: true,
 	},

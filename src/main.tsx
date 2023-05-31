@@ -39,7 +39,7 @@ console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受�
 
 // 2. 使用 createBrowserRouter 创建
 // const router = createBrowserRouter(routes)// history模式要对nginx进行单独设置,否则可能会导致404
-const router = createHashRouter(routes);
+const router = createBrowserRouter(routes);
 // 或者 使用 createRoutesFromElements
 // const router = createBrowserRouter(
 // 	createRoutesFromElements(
