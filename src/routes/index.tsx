@@ -8,19 +8,23 @@ const router: RouteObject[] = [
 	{
 		// 根目录 重定向
 		path: "/",
-		element: <Navigate to="/app"></Navigate>,
-	},
-	{
-		path: "/app",
-		element: <App />,
-	},
-	{
-		path: "/playground",
-		element: <Navigate to="/playground/reduxTest"></Navigate>,
+		// element: <Navigate to="/app" />,绝对不能使用 element: <Navigate to="/app" />来重定向子路由,会导致异常错误发生
 		children: [
 			{
-				path: "/playground/reduxTest",
-				element: <ReduxTest />,
+				index: true, // index 属性来确定 children下的默认子路由,
+				path: "/app",
+				element: <App />,
+			},
+			{
+				path: "/playground",
+				// element: <Navigate to="reduxTest" />,绝对不能使用 element: <Navigate to="reduxTest" />来重定向子路由,会导致异常错误发生
+				children: [
+					{
+						index: true, // index 属性来确定 children下的默认子路由,
+						path: "/playground/reduxTest",
+						element: <ReduxTest />,
+					},
+				],
 			},
 		],
 	},
