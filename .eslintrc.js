@@ -35,12 +35,13 @@ module.exports = {
 	plugins: ["@typescript-eslint", "react", "prettier", "babel"],
 	rules: {
 		// ESLint Rules
-		"no-console": 1, // 关闭对 console 使用的警告。
-		"no-unused-vars": 1, // 关闭对未使用变量的警告。
+		"no-console": 0, // 关闭对 console 使用的警告。
+		"no-unused-vars": 0, // 关闭对未使用变量的警告。
 
 		// TypeScript Rules
-		"@typescript-eslint/no-explicit-any": 1,
-		"@typescript-eslint/no-unused-vars": [1, { argsIgnorePattern: "^_" }],
+		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/no-unused-vars": [0, { argsIgnorePattern: "^_" }],
+		"@typescript-eslint/no-non-null-assertion": 0, // 非空断言
 		// 启用 TypeScript 下的未使用变量规则，忽略以 _ 开头的变量。
 
 		// React Rules

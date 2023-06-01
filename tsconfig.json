@@ -26,7 +26,8 @@
 			"@UTILS/*": ["src/utils/*"],
 			"@ASSETS/*": ["src/assets/*"],
 			"@REDUX/*": ["src/redux/*"],
-			"@ROUTES/*": ["src/routes/*"]
+			"@ROUTES/*": ["src/routes/*"],
+			"@STYLES/*": ["src/styles/*"]
 		},
 		"typeRoots": ["./node_modules/@types", "./src/typings"],
 		"noUnusedLocals": true,

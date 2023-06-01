@@ -8,6 +8,9 @@ const processPath = (
 			...route,
 			path: processRoutePath(route.path || "/", rootPath),
 		};
+		if (route.children?.length) {
+			processPath(route.children, rootPath);
+		}
 		// 处理其他路由对象的属性，如果有需要的话
 		return processedRoute;
 	});

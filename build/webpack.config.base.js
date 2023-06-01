@@ -9,32 +9,35 @@ const config = require("dotenv").config({
 	// 根据不同的NODE_ENV 加载不同的env文件
 });
 
-const ROOTPATH = config.parsed.ROOT_PATH;
-
 function resolve(dir) {
 	return path.join(__dirname, "..", dir);
 	// .. 相当于 ../上一级 path.join 相当于一个 路径计算器
 }
 
-console.log(config.parsed.ROOT_PATH, "config");
-
 const isDev = process.env.NODE_ENV !== "production";
+const rootPath = process.env.ROOT_PATH;
 
-const HtmlWebpackPluginList = ["index.html", "404.html"].map(
-	fileName =>
-		new HtmlWebpackPlugin({
-			title: "REACT-ADMIN",
-			inject: true,
-			template: path.resolve(__dirname, "../public/index.html"),
-			filename: fileName,
-			publicPath: ROOTPATH,
-		}),
-);
+console.log("rootPath=", rootPath, "res=", rootPath || "/");
+
+const HtmlWebpackPluginList = ["index.html", "404.html"].map(fileName => {
+	const item = {
+		title: "REACT-ADMIN",
+		inject: true,
+		template: path.resolve(__dirname, "../public/index.html"),
+		filename: fileName,
+		publicPath: rootPath || "/",
+	};
+
+	return new HtmlWebpackPlugin(item);
+});
 
 const plugins = [
 	new webpack.DefinePlugin({
 		// 暴露在项目中的全局变量
-		"process.env": JSON.stringify(config),
+		"process.env": JSON.stringify({
+			...config.parsed,
+			ROOT_PATH: rootPath || "",
+		}),
 		// 如果没有用单双引号分别包一层,则会导致 value做为一个未定义的变量暴露,
 		// 加单双引号"'NODE_ENV:DEVELOPMENT'",或者使用JSON.strigfy(config)
 	}),
@@ -62,6 +65,7 @@ module.exports = {
 		path: path.resolve(__dirname, "../dist"),
 		filename: "static/js/[name].[fullhash].js",
 		clean: true, // 自动清空上次打包结果
+		// publicPath: "/",
 		// publicPath:
 		//   process.env.NODE_ENV === 'production'
 		//     \? '生产环境CDN异步静态资源URI'
@@ -81,6 +85,7 @@ module.exports = {
 			"@ASSETS": resolve("src/assets"),
 			"@REDUX": resolve("src/redux"),
 			"@ROUTES": resolve("src/routes"),
+			"@STYLES": resolve("src/styles"),
 		},
 	},
 	module: {

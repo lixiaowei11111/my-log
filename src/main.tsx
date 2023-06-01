@@ -7,7 +7,6 @@
 
 // 入口文件 相当于 main函数
 // react18 之后
-import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import {
@@ -22,7 +21,8 @@ import ErrorBoundary from "@COMPONENTS/ErrorBoundary";
 
 import store from "@/redux/store";
 import routes from "@ROUTES/index";
-import App from "./App";
+
+import "@STYLES/tailwind.less";
 
 console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受替换的全局变量
 
@@ -38,9 +38,10 @@ console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受�
 // )
 
 // 2. 使用 createBrowserRouter 创建
-// const router = createBrowserRouter(routes)// history模式要对nginx进行单独设置,否则可能会导致404
-const router = createBrowserRouter(routes);
-// 或者 使用 createRoutesFromElements
+const router = createBrowserRouter(routes); // history模式要对nginx进行单独设置,否则可能会导致404
+// const router = createHashRouter(routes);
+// 或者 使用
+// createRoutesFromElements
 // const router = createBrowserRouter(
 // 	createRoutesFromElements(
 // 		<Route
