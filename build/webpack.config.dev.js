@@ -12,7 +12,7 @@ const devServer = {
 	// publicPath: "/",
 	// webpack5 中 contentBase选项 被替换为 static选项
 	static: {
-		directory: path.join(__dirname, "../pulic"),
+		directory: path.join(__dirname, "../static"),
 		publicPath: "/",
 		watch: true,
 	},
@@ -26,7 +26,7 @@ const devServer = {
 	open: true, // 服务器启动后默认打开浏览器
 	// watchOptions 被放在devServer 外面了
 	watchFiles: {
-		paths: ["src/**/*", "public/**/*"],
+		paths: ["src/**/*", "static/**/*"],
 		options: {
 			usePolling: false,
 		},

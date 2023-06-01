@@ -7,6 +7,7 @@
 	"scripts": {
 		"dev": "npm run lint:eslint:fix && npm run start:dev",
 		"build": "npm run start:prod",
+		"deploy": "cross-env NODE_ENV=production ROOT_PATH=\/my-log\/ npm run build ",
 		"build:node": "cross-env NODE_ENV=production node --trace-warnings ./build/build.js",
 		"build:report": "cross-env NODE_ENV=production npm_config_report=true npm run build:node",
 		"start:dev": "cross-env NODE_ENV=development webpack serve --mode=development --progress --config ./build/webpack.config.dev.js",
