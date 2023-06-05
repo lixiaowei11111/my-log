@@ -20,25 +20,24 @@ import {
 import ErrorBoundary from "@COMPONENTS/ErrorBoundary";
 
 import store from "@/redux/store";
-import routes from "@ROUTES/index";
+// import routes from "@ROUTES/index";
+import App from "./App";
 
 import "@STYLES/tailwind.less";
 
 console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受替换的全局变量
 
-// //1. 路由的常规创建方法
-// createRoot(document.getElementById('root')).render(
-// 	<ErrorBoundary>
-// 		<Provider store={store}>
-// 			<BrowserRouter>
-// 				<App />
-// 			</BrowserRouter>
-// 		</Provider>
-// 	</ErrorBoundary>,
-// )
+//1. 路由的常规创建方法
+createRoot(document.getElementById("root")!).render(
+	<ErrorBoundary>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</ErrorBoundary>,
+);
 
 // 2. 使用 createBrowserRouter 创建
-const router = createBrowserRouter(routes); // history模式要对nginx进行单独设置,否则可能会导致404
+//const router = createBrowserRouter(routes); // history模式要对nginx进行单独设置,否则可能会导致404
 // const router = createHashRouter(routes);
 // 或者 使用
 // createRoutesFromElements
@@ -56,10 +55,10 @@ const router = createBrowserRouter(routes); // history模式要对nginx进行单
 // )
 
 // RouterProvider必须配合 data router 来使用
-createRoot(document.getElementById("root")!).render(
-	<ErrorBoundary>
-		<Provider store={store}>
-			<RouterProvider router={router}></RouterProvider>
-		</Provider>
-	</ErrorBoundary>,
-);
+// createRoot(document.getElementById("root")!).render(
+// 	<ErrorBoundary>
+// 		<Provider store={store}>
+// 			<RouterProvider router={router}></RouterProvider>
+// 		</Provider>
+// 	</ErrorBoundary>,
+// );

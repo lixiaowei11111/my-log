@@ -1,5 +1,17 @@
+import { BrowserRouter } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import zhCN from "antd/lib/locale/zh_CN";
+
+import Router from "@ROUTES/index";
+
 function App() {
-	return <>this is a App ReactJSX</>;
+	return (
+		<BrowserRouter>
+			<ConfigProvider locale={zhCN}>
+				<Router></Router>
+			</ConfigProvider>
+		</BrowserRouter>
+	);
 }
 
 export default App;

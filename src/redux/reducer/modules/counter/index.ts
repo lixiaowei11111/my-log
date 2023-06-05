@@ -1,6 +1,6 @@
 import type { AnyAction } from "redux";
 import type { CounterState } from "@REDUX/interface";
-import ActionEnum from "@REDUX/constants";
+import ActionTypeEnum from "@REDUX/constants";
 import { produce } from "immer";
 
 const counterState: CounterState = {
@@ -13,10 +13,10 @@ const counterReducer = (
 ) =>
 	produce(state, draftState => {
 		switch (action.type) {
-			case ActionEnum.INCREMENT:
+			case ActionTypeEnum.INCREMENT:
 				draftState.val++;
 				return draftState;
-			case ActionEnum.DECREMENT:
+			case ActionTypeEnum.DECREMENT:
 				draftState.val--;
 				return draftState;
 			default:

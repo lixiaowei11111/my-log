@@ -1,7 +1,7 @@
-import { Navigate, RouteObject } from "react-router-dom";
+import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 
 import NotFound from "@COMPONENTS/Error/404";
-import App from "@/App";
+import Home from "@VIEWS/Home";
 
 import processPath from "./processPath";
 
@@ -14,11 +14,11 @@ let router: RouteObject[] = [
 	{
 		// 根目录 重定向
 		path: "/", // my-log 来匹配项目名称
-		element: <Navigate to="/app" />, ////绝对不能使用 element: <Navigate to="/app" />来重定向子路由,会导致异常错误发生
+		element: <Navigate to="/home" />, ////绝对不能使用 element: <Navigate to="/app" />来重定向子路由,会导致异常错误发生
 	},
 	{
-		path: "/app",
-		element: <App />,
+		path: "/home",
+		element: <Home />,
 	},
 	...routeList,
 	{
@@ -45,4 +45,8 @@ if (rootPath) {
 
 console.log(router, "router");
 
-export default router;
+const Router = () => {
+	return useRoutes(router);
+};
+
+export default Router;
