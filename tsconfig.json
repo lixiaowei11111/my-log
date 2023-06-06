@@ -20,14 +20,15 @@
 		"paths": {
 			"@": ["src"],
 			"@/*": ["src/*"],
-			"@VIEWS/*": ["src/views/*"],
 			"@API/*": ["src/api/*"],
-			"@COMPONENTS/*": ["src/components/*"],
-			"@UTILS/*": ["src/utils/*"],
 			"@ASSETS/*": ["src/assets/*"],
+			"@COMPONENTS/*": ["src/components/*"],
+			"@LAYOUTS/*": ["src/layouts/*"],
 			"@REDUX/*": ["src/redux/*"],
 			"@ROUTES/*": ["src/routes/*"],
-			"@STYLES/*": ["src/styles/*"]
+			"@STYLES/*": ["src/styles/*"],
+			"@UTILS/*": ["src/utils/*"],
+			"@VIEWS/*": ["src/views/*"]
 		},
 		"typeRoots": ["./node_modules/@types", "./src/typings"],
 		"noUnusedLocals": true,

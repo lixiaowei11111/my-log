@@ -78,14 +78,15 @@ module.exports = {
 		alias: {
 			// 通过别名来把原导入路径映射成一个新的导入路径
 			"@": resolve("src"),
-			"@VIEWS": resolve("src/views"),
 			"@API": resolve("src/api"),
-			"@COMPONENTS": resolve("src/components"),
-			"@UTILS": resolve("src/utils"),
 			"@ASSETS": resolve("src/assets"),
+			"@COMPONENTS": resolve("src/components"),
+			"@LAYOUTS": resolve("src/layouts"),
 			"@REDUX": resolve("src/redux"),
 			"@ROUTES": resolve("src/routes"),
 			"@STYLES": resolve("src/styles"),
+			"@UTILS": resolve("src/utils"),
+			"@VIEWS": resolve("src/views"),
 		},
 	},
 	module: {
