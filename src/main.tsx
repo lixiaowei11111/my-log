@@ -29,7 +29,7 @@ console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受�
 
 //1. 路由的常规创建方法
 createRoot(document.getElementById("root")!).render(
-	<ErrorBoundary>
+	<ErrorBoundary fallback={<>出错了!</>}>
 		<Provider store={store}>
 			<App />
 		</Provider>
