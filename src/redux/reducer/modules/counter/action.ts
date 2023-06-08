@@ -1,4 +1,4 @@
-import ActionTypeEnum from "@REDUX/constants";
+import ActionTypeEnum from "@CONSTANTS/ActionTypeEnum";
 import type { ReduxAction } from "@REDUX/interface";
 
 const { INCREMENT, DECREMENT } = ActionTypeEnum;

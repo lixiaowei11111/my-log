@@ -1,6 +1,6 @@
 import type { AnyAction } from "redux";
 import type { CounterState } from "@REDUX/interface";
-import ActionTypeEnum from "@REDUX/constants";
+import ActionTypeEnum from "@CONSTANTS/ActionTypeEnum";
 import { produce } from "immer";
 
 const { INCREMENT, DECREMENT } = ActionTypeEnum;

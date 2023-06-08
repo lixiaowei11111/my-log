@@ -128,6 +128,18 @@ type InK1 = {
 // 	gender: number;
 // }
 
+interface BasicAddress {
+	name?: string;
+	street: string;
+	city: string;
+	country: string;
+	postalCode: string;
+}
+
+interface AddressWithUnit extends BasicAddress {
+	unit: string;
+}
+
 // unreachable code
 process.exit(0);
 console.log("process.exit(0) 停止程序");
