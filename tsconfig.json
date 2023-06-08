@@ -23,6 +23,7 @@
 			"@API/*": ["src/api/*"],
 			"@ASSETS/*": ["src/assets/*"],
 			"@COMPONENTS/*": ["src/components/*"],
+			"@CONSTANTS/*": ["src/constants/*"],
 			"@LAYOUTS/*": ["src/layouts/*"],
 			"@REDUX/*": ["src/redux/*"],
 			"@ROUTES/*": ["src/routes/*"],

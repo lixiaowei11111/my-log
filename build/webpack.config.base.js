@@ -81,6 +81,7 @@ module.exports = {
 			"@API": resolve("src/api"),
 			"@ASSETS": resolve("src/assets"),
 			"@COMPONENTS": resolve("src/components"),
+			"@CONSTANTS": resolve("src/constants"),
 			"@LAYOUTS": resolve("src/layouts"),
 			"@REDUX": resolve("src/redux"),
 			"@ROUTES": resolve("src/routes"),
