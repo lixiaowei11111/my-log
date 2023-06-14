@@ -15,6 +15,7 @@
 		"noEmit": true,
 		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true, // 开启装饰器语法
 		"moduleResolution": "node",
 		"baseUrl": "./",
 		"paths": {
