@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "npm run lint:eslint:fix && npm run start:dev",
 		"build": "npm run start:prod",
-		"deploy": "cross-env NODE_ENV=production ROOT_PATH=\/my-log\/ npm run build ",
+		"deploy": "cross-env NODE_ENV=production ROOT_PATH=/my-log/ npm run build ",
 		"build:node": "cross-env NODE_ENV=production node --trace-warnings ./build/build.js",
 		"build:report": "cross-env NODE_ENV=production npm_config_report=true npm run build:node",
 		"start:dev": "cross-env NODE_ENV=development webpack serve --mode=development --progress --config ./build/webpack.config.dev.js",
@@ -32,6 +32,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.21.8",
 		"@babel/eslint-parser": "^7.21.8",
+		"@babel/plugin-proposal-decorators": "^7.22.5",
 		"@babel/plugin-transform-runtime": "^7.21.4",
 		"@babel/preset-env": "^7.21.5",
 		"@babel/preset-react": "^7.18.6",
@@ -94,6 +95,7 @@
 		"webpack-merge": "^5.8.0"
 	},
 	"dependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.18.6",
 		"@commitlint/cli": "^17.6.3",
 		"@commitlint/config-conventional": "^17.6.3",
 		"antd": "^5.5.0",
