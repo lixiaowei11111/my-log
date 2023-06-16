@@ -140,6 +140,24 @@ interface AddressWithUnit extends BasicAddress {
 	unit: string;
 }
 
+interface Human<K> {
+	p1: K;
+	p2: K;
+}
+
+// class Person<T> implements Human<T> {
+// 	private p1: T;
+// 	private p2: T;
+// 	constructor(p1: T, p2: T) {
+// 		this.p1 = p1;
+// 		this.p2 = p2;
+// 	}
+
+// 	setArray = ():T[] => {
+// 		return T[];
+// 	};
+// }
+
 // unreachable code
 process.exit(0);
 console.log("process.exit(0) 停止程序");
