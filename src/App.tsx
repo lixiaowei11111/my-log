@@ -6,6 +6,7 @@ import Router from "@ROUTES/index";
 
 import "@VIEWS/MyPlayGround/TsApply/decorator"; // 装饰器
 import "@VIEWS/MyPlayGround/pattern/Observable"; // 观察者
+import "@VIEWS/MyPlayGround/pattern/002_Proxy";
 
 function App() {
 	return (

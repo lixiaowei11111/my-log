@@ -1,15 +1,3 @@
-class Singleton {
-	private static instance: Singleton;
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	private constructor() {}
-	public static getInstance(): Singleton {
-		if (!Singleton.instance) {
-			Singleton.instance = new Singleton();
-		}
-		return Singleton.instance;
-	}
-}
-
 /**
  * 单例模式的优点：
 
@@ -26,3 +14,15 @@ class Singleton {
 线程池：由于线程池需要管理线程对象，可以使用单例模式来实现。
 配置文件管理器：由于配置文件管理器只需要一个实例对象，可以使用单例模式来实现。
  */
+
+class Singleton {
+	private static instance: Singleton;
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	private constructor() {}
+	public static getInstance(): Singleton {
+		if (!Singleton.instance) {
+			Singleton.instance = new Singleton();
+		}
+		return Singleton.instance;
+	}
+}
