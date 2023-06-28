@@ -130,5 +130,9 @@ const AGB: React.FC = () => {
 	);
 };
 
+/**6. useContext ===> UseContextApply */
+
+/**7. event process */
+
 const jsx = <div>jsx</div>;
 const ele = React.createElement("div", null, "hello");
