@@ -2,6 +2,7 @@ import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 
 import NotFound from "@COMPONENTS/Error/404";
 import Home from "@VIEWS/Home";
+import MainLayout from "@/layouts/MainLayout";
 
 import processPath from "./processPath";
 
@@ -17,8 +18,13 @@ let router: RouteObject[] = [
 		element: <Navigate to="/home" />, ////绝对不能使用 element: <Navigate to="/app" />来重定向子路由,会导致异常错误发生
 	},
 	{
-		path: "/home",
-		element: <Home />,
+		element: <MainLayout />,
+		children: [
+			{
+				path: "/home",
+				element: <Home />,
+			},
+		],
 	},
 	...routeList,
 	{
