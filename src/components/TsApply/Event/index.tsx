@@ -106,7 +106,7 @@ export const SubmitEvent: FC = () => {
 	);
 };
 
-//005_copy,cut,paste事件:
+//005_copy,cut,paste事件:ClipboardEvent<T= Element>;ClipboardEventHandler<T= Element>
 
 export const ClipboardEventFC: FC = () => {
 	const handleInputCopy: ClipboardEventHandler<HTMLInputElement> = e => {
@@ -142,6 +142,95 @@ export const ClipboardEventFC: FC = () => {
 				onCut={handleInputCut}
 				onPaste={handleInputPaste}
 			/>
+		</>
+	);
+};
+
+//006_mouseover,mouseout,mouseenter,mouseleave事件:MouseEvent<T = Element>
+export const MouseMoveEventFC: FC = () => {
+	const handleMouseEnterDiv: MouseEventHandler<HTMLDivElement> = e => {
+		console.log(
+			"mouse enter",
+			e.target === e.currentTarget,
+			e.target === e.relatedTarget,
+			e.target,
+			e.currentTarget,
+			e.relatedTarget,
+		);
+	};
+	const handleMouseLeaveDiv: MouseEventHandler<HTMLDivElement> = e => {
+		console.log(
+			"mouse leave",
+			e.target === e.currentTarget,
+			e.target === e.relatedTarget,
+			e.target,
+			e.currentTarget,
+			e.relatedTarget,
+		);
+	};
+	const handleMouseOverDiv: MouseEventHandler<HTMLDivElement> = e => {
+		console.log(
+			"mouse enter",
+			e.target === e.currentTarget,
+			e.target === e.relatedTarget,
+			e.target,
+			e.currentTarget,
+			e.relatedTarget,
+		);
+	};
+	const handleMouseOutDiv: MouseEventHandler<HTMLDivElement> = e => {
+		console.log(
+			"mouse leave",
+			e.target === e.currentTarget,
+			e.target === e.relatedTarget,
+			e.target,
+			e.currentTarget,
+			e.relatedTarget,
+		);
+	};
+
+	return (
+		<>
+			<div style={{ marginBottom: "20px" }}>
+				<span>MouseEnter 和 MouseLeave</span>
+				<div
+					style={{
+						width: "300px",
+						height: "300px",
+						backgroundColor: "#fa12da",
+					}}
+					onMouseEnter={handleMouseEnterDiv}
+					onMouseLeave={handleMouseLeaveDiv}
+				>
+					outer
+					<div
+						style={{ width: "200px", height: "200px", backgroundColor: "#bfa" }}
+					>
+						inner
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<span>MouseOver 和 Mouseout</span>
+				{/* 进入子元素会触发,当前元素的out事件和子元素的over事件 */}
+				<div
+					style={{
+						width: "300px",
+						height: "300px",
+						backgroundColor: "#fa12da",
+					}}
+					onMouseOver={handleMouseOverDiv}
+					onMouseOut={handleMouseOutDiv}
+				>
+					outer
+					<div
+						style={{ width: "200px", height: "200px", backgroundColor: "#bfa" }}
+					>
+						inner
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };
