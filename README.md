@@ -128,6 +128,11 @@
 
 + `speed-measure-webpack-plugin`: 构建耗时分析
 
++ `friendly-errors-webpack-plugin`:
+	```
+	在控制台中友好地展示 webpack 构建的错误和警告信息，以提高开发体验。它可以将错误和警告信息进行颜色区分、格式化输出，并在构建完成后以弹窗形式通知用户。
+	```
+
 ### `loader`
 
 + `babel-laoder`

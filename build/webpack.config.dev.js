@@ -1,12 +1,15 @@
 const webpackMerge = require("webpack-merge");
 const path = require("path");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 
 const baseConfig = require("./webpack.config.base");
 
 const devServer = {
+	bonjour: true,
 	https: true,
 	host: "localhost", // 服务器
+	port: "8888",
 	// contentBase: path.join(__dirname, "../public"),
 	// watchContentBase: true,
 	// publicPath: "/",
@@ -48,6 +51,13 @@ const devConfig = {
 		new ReactRefreshWebpackPlugin({
 			overlay: {
 				sockIntegration: "whm",
+			},
+		}),
+		new FriendlyErrorsPlugin({
+			compilationSuccessInfo: {
+				messages: [
+					`Your application is running here: https://${devServer.host}:${devServer.port}`,
+				],
 			},
 		}),
 	],
