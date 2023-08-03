@@ -2,6 +2,8 @@ import CounterByUserReducer from "@COMPONENTS/TsApply/UseReducerApply";
 import { ClipboardEventFC, MouseMoveEventFC } from "@COMPONENTS/TsApply/Event";
 import useWebSocket from "@/hooks/useWebSocket";
 import { Button } from "antd";
+import "@COMPONENTS/BinaryAPI/index";
+
 const Home = () => {
 	const onMessage = (e: MessageEvent) => {
 		console.log(e, "onmessage");
