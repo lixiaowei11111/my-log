@@ -1,6 +1,8 @@
 const webpackMerge = require("webpack-merge");
 const path = require("path");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const OutputOrderWebpackPlugin = require("../webpack/plugin/output-order-webpack-plugin");
+const chalk = require("chalk");
 
 const baseConfig = require("./webpack.config.base");
 
@@ -45,12 +47,21 @@ const devServer = {
 	// 		secure: false, // 默认为true时不接受非https的后端服务器,设置为false即可
 	// 	},
 	// },
+	onListening(devServer) {
+		// 提供了在webpack-dev-server开始监听端口连接时执行自定义函数的能力。
+		// console.log(devServer, "onListening devServer");
+		const port = devServer.server.address().port; //webpack4 为 devServer.listeningApp.address(),webpack5.x 为 server
+		const host = devServer.server.address().address;
+		const url = `https://${host}:${port}`;
+		console.log(chalk.blue(`Your application is running here: ${url} `));
+	},
 };
 
 const devConfig = {
 	mode: process.env.NODE_ENV,
 	devServer: devServer,
 	plugins: [
+		// new OutputOrderWebpackPlugin(),
 		new ReactRefreshWebpackPlugin({
 			overlay: {
 				sockIntegration: "whm",

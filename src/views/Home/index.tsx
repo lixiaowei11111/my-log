@@ -2,6 +2,7 @@ import CounterByUserReducer from "@COMPONENTS/TsApply/UseReducerApply";
 import { ClipboardEventFC, MouseMoveEventFC } from "@COMPONENTS/TsApply/Event";
 import useWebSocket from "@/hooks/useWebSocket";
 import { Button } from "antd";
+import ClosureTrap from "@/components/ClosureTrap";
 import "@COMPONENTS/BinaryAPI/index";
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
 				client send message
 			</Button>
 			<Button onClick={() => ws?.close()}>close</Button>
+			<ClosureTrap />
 		</>
 	);
 };
