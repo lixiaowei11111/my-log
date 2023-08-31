@@ -3,6 +3,7 @@ import { ClipboardEventFC, MouseMoveEventFC } from "@COMPONENTS/TsApply/Event";
 import useWebSocket from "@/hooks/useWebSocket";
 import { Button } from "antd";
 import ClosureTrap from "@/components/ClosureTrap";
+import DateRangePicker from "@/components/DateRangePicker";
 import "@COMPONENTS/BinaryAPI/index";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
 
 	return (
 		<>
+			<DateRangePicker />
 			<ClipboardEventFC></ClipboardEventFC>
 			<span>Home Component</span>
 			<CounterByUserReducer />

@@ -1,11 +1,12 @@
 import { Layout } from "antd";
+import "./index.less";
 
 const { Header } = Layout;
 
 const Navbar = () => {
 	return (
-		<Header>
-			<div>navbar</div>
+		<Header className="flex bg-white header">
+			<div className="flex text-primary logo">MATRYOSHA</div>
 		</Header>
 	);
 };

@@ -19,11 +19,12 @@ import {
 } from "react-router-dom";
 import ErrorBoundary from "@COMPONENTS/ErrorBoundary";
 
-import store from "@/redux/store";
+import store from "@REDUX/store";
 // import routes from "@ROUTES/index";
 import App from "./App";
 
-import "@STYLES/tailwind.less";
+import "@STYLES/tailwind.css";
+import "@STYLES/index.less";
 
 console.log(process.env, "process.env"); // 通过webpack的DefinePlugin接受替换的全局变量
 

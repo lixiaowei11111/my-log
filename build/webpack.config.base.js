@@ -131,6 +131,16 @@ module.exports = {
 					"css-loader",
 					"postcss-loader",
 					"less-loader",
+					{
+						loader: "style-resources-loader",
+						options: {
+							patterns: [
+								path.resolve(__dirname, "../src/styles/theme/color.less"),
+								path.resolve(__dirname, "../src/styles/theme/light.less"),
+							],
+							injector: "append",
+						},
+					},
 				], // less=>postcss=>css =>style 从尾部开始处理
 			},
 			{

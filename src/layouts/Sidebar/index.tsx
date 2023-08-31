@@ -3,7 +3,7 @@ import { Layout } from "antd";
 const { Sider } = Layout;
 const Sidebar = () => {
 	return (
-		<Sider>
+		<Sider theme="light">
 			<div>sidebar</div>
 		</Sider>
 	);

@@ -158,6 +158,10 @@
   由于thread-loader不支持抽离css插件MiniCssExtractPlugin.loader(下面会讲),所以这里只配置了多进程解析js,开启多线程也是需要启动时间,大约600ms左右,所以适合规模比较大的项目。
   ```
 
++ `style-resources-loader`
+```
+用于自动导入定义的全局变量的less文件，定义存储了less变量的文件要被其他less文件使用时,需要显示引入，每使用一次就引入非常冗余，使用这个插件可以处理导入
+```
   
 
 ### optimization
