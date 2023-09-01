@@ -122,6 +122,7 @@ const AGB: React.FC = () => {
 	const { p1, p2 } = p;
 	const memorizedValue = React.useMemo((): string => {
 		return p1 + "+" + p2;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<>
