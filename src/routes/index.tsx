@@ -56,3 +56,6 @@ const Router = () => {
 };
 
 export default Router;
+
+// https://reactrouter.com/en/main/upgrading/v5#use-usenavigate-instead-of-usehistory
+// v5 迁移至v6时

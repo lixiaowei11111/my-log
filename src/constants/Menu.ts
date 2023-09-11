@@ -4,17 +4,15 @@ export interface HeadModuleType {
 	icon?: `icon icon-${string}`;
 	title: string;
 	auth?: boolean;
-	module: string;
 }
 
 export const headModuleList: HeadModuleType[] = [
 	{
-		path: "/admin",
+		path: "/home",
 		key: 1,
 		icon: "icon icon-customer",
-		title: "Admin",
+		title: "Home",
 		auth: false,
-		module: "admin",
 	},
 	{
 		path: "/playground",
@@ -22,6 +20,5 @@ export const headModuleList: HeadModuleType[] = [
 		icon: "icon icon-kaishiceshi",
 		title: "Playground",
 		auth: false,
-		module: "playground",
 	},
 ];

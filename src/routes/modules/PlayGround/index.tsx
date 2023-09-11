@@ -5,6 +5,7 @@ import MainLayout from "@LAYOUTS/MainLayout";
 import ReduxTest from "@VIEWS/MyPlayGround/ReduxTest";
 import Iterator from "@VIEWS/MyPlayGround/Iterator";
 import BlobBasic from "@VIEWS/MyPlayGround/BlobBasic";
+import HandWritten from "@/views/MyPlayGround/HandWritten";
 
 const router: RouteObject[] = [
 	{
@@ -25,6 +26,10 @@ const router: RouteObject[] = [
 			{
 				path: "iterator",
 				element: <Iterator />,
+			},
+			{
+				path: "hand",
+				element: <HandWritten />,
 			},
 		],
 	},

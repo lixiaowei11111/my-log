@@ -1,25 +1,22 @@
-import { useState } from "react";
 import { type MenuProps, Menu, Layout } from "antd";
 
-import HeadBand from "@/components/SVG/HeadBand";
+import useMenuActiveItem from "@/hooks/useMenuActiveItem";
 
+/* Components */
+import HeadBand from "@/components/SVG/HeadBand";
 import { headModuleList } from "@/constants/Menu";
 import "./index.less";
 
 const { Header } = Layout;
 const items: MenuProps["items"] = headModuleList.map(item => ({
 	label: item.title,
-	icon: <i className={item.icon} />,
-	key: item.module,
+	icon: item.icon ? <i className={item.icon} /> : null,
+	key: item.path,
 }));
 
 const Navbar = () => {
-	const [current, setCurrent] = useState("admin");
+	const [selectedKey, setSelectedKey] = useMenuActiveItem(1);
 
-	const onClick: MenuProps["onClick"] = e => {
-		console.log("click ", e);
-		setCurrent(e.key);
-	};
 	return (
 		<Header className="flex bg-white c-header">
 			<div className="flex text-primary c-header__logo">
@@ -28,9 +25,9 @@ const Navbar = () => {
 			</div>
 			<Menu
 				className="c-header__menu"
-				onClick={onClick}
-				selectedKeys={[current]}
+				onSelect={({ key }) => setSelectedKey(key)}
 				mode="horizontal"
+				selectedKeys={[selectedKey]}
 				items={items}
 			/>
 		</Header>
