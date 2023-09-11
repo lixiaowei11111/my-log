@@ -14,7 +14,7 @@ const devServer = {
 		type: "https",
 	},
 	host: "localhost", // 服务器
-	port: "8888",
+	port: "9999",
 	// contentBase: path.join(__dirname, "../public"),
 	// watchContentBase: true,
 	// publicPath: "/",
