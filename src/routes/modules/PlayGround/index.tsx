@@ -6,6 +6,7 @@ import ReduxTest from "@VIEWS/MyPlayGround/ReduxTest";
 import Iterator from "@VIEWS/MyPlayGround/Iterator";
 import BlobBasic from "@VIEWS/MyPlayGround/BlobBasic";
 import HandWritten from "@/views/MyPlayGround/HandWritten";
+import DataStructures from "@/views/MyPlayGround/DataStructuresAndAlgorithm";
 
 const router: RouteObject[] = [
 	{
@@ -30,6 +31,10 @@ const router: RouteObject[] = [
 			{
 				path: "hand",
 				element: <HandWritten />,
+			},
+			{
+				path: "dataStructureAndAlgorithm",
+				element: <DataStructures />,
 			},
 		],
 	},
