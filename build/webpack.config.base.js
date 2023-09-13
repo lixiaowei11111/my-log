@@ -89,6 +89,10 @@ module.exports = {
 			"@UTILS": resolve("src/utils"),
 			"@VIEWS": resolve("src/views"),
 		},
+		/* 
+		resolve.modules 是 webpack 中的一个配置选项，用于指定模块解析时要搜索的目录。它的作用是告诉 webpack 在查找模块时应该搜索哪些目录，以确保正确地解析模块的依赖关系。具体来说，resolve.modules 选项用于配置 webpack 查找模块时的目录搜索顺序。默认情况下，webpack 会首先从当前目录开始查找，然后逐级向上级目录查找，直到找到模块或达到文件系统根目录。这个过程可以通过设置 resolve.modules 来自定义。
+		*/
+		modules: ['node_modules','src'],
 	},
 	module: {
 		rules: [
@@ -102,7 +106,7 @@ module.exports = {
 					{
 						loader: require.resolve("babel-loader"),
 						options: {
-							cacheDirectory: true,
+							cacheDirectory: true, //开启babel-loader的缓存
 							cacheCompression: false,
 							presets: [
 								[
