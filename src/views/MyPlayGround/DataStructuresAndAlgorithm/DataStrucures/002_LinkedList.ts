@@ -127,7 +127,9 @@ class SentinelLinkedList<K, V> {
 		return null;
 	}
 
-	public static reverser<K, V>(linkedList: LinkedList<K, V>): LinkedList<K, V> {
+	public static reverser<K, V>(
+		linkedList: SentinelLinkedList<K, V>,
+	): SentinelLinkedList<K, V> {
 		// public static reverser(linkedList: LinkedList<K, V>): LinkedList<K, V> {
 		/* 
 		在 TypeScript 中，静态成员是属于类本身而不是类的实例。由于类型参数在类的实例化时才会确定具体类型，因此静态成员不能引用类型参数。
@@ -135,6 +137,24 @@ class SentinelLinkedList<K, V> {
 		静态成员通常用于类的整体操作和共享状态，不依赖于类的实例。因此，它们不能使用实例相关的类型参数。
 		如果你需要在静态成员中使用泛型功能，可以考虑将泛型应用于静态方法而不是静态成员变量。这样可以通过方法参数来传递泛型类型，而不是直接在静态成员中引用类型参数。 
 		*/
+		// 链表反转 就是遍历操作,更改指针指向
+		let currentNode = linkedList.head;
+		let prev = null;
+		let next = null;
+		[linkedList.head, linkedList.tail] = [linkedList.tail, linkedList.head]; // 解构赋值交换head and tail
+		// 遍历
+		while (currentNode !== linkedList.sentinel) {
+			next = currentNode!.next;
+			currentNode!.next = prev;
+			currentNode!.prev = next;
+
+			prev = currentNode;
+			currentNode = next;
+		}
+		// After the loop, sentinel's next should point to the new head
+		linkedList.sentinel!.next = linkedList.head;
+		// And sentinel's prev should point to the new tail
+		linkedList.sentinel!.prev = linkedList.tail;
 		return linkedList;
 	}
 }
