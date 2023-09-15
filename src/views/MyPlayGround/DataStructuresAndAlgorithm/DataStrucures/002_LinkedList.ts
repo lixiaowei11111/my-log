@@ -1,6 +1,6 @@
 // 1. 链表的种类有 单向链表， 循环链表， 双向链表，以及双向循环链表
 
-import { ValueOptions } from "postcss/lib/container";
+// import { ValueOptions } from "postcss/lib/container";
 
 // 使用双向循环链表来实现一个LRU缓存算法
 class Node<K, V> {
