@@ -13,7 +13,7 @@ const devServer = {
 	server: {
 		type: "https",
 	},
-	host: "localhost", // 服务器
+	host: "0.0.0.0", // 服务器 0.0.0.0是环回地址 相当于localhost和局域网IP都可以访问,localhost===127.0.0.1只能被本地访问
 	port: "9999",
 	// contentBase: path.join(__dirname, "../public"),
 	// watchContentBase: true,
