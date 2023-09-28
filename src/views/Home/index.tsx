@@ -6,6 +6,8 @@ import ClosureTrap from "@/components/ClosureTrap";
 import DateRangePicker from "@/components/DateRangePicker";
 import "@COMPONENTS/BinaryAPI/index";
 
+import "../MyPlayGround/PromiseA+/index.ts";
+
 const Home = () => {
 	const onMessage = (e: MessageEvent) => {
 		console.log(e, "onmessage");
