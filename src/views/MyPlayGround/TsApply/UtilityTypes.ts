@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-types */
 export default {};
 // TypeScript
@@ -92,6 +93,8 @@ const rObj: RProps = { a: 5 };
 type MyRequired<T> = {
 	[K in keyof T]-?: T[K];
 };
+// -?通过此映射操作符，去掉属性可选
+// T[P]设置属性类型
 
 /* 4. Readonly<T> 构建一个类型，其中所有的属性都设置为只读（readonly），意味着构建的类型的属性不能被重新赋值。 */
 interface ROTodo {
@@ -269,4 +272,145 @@ type TP5 = Parameters<never>;
 // 报错: 类型“Function”不满足约束“(...args: any) => any”。
 // 类型“Function”提供的内容与签名“(...args: any): any”不匹配。
 
-/* 12. ConstructorParameters<Type> */
+// 手动实现Parameters<Type>
+type MyParameters<T extends (...arg: any) => any> = T extends (
+	...arg: infer P
+) => any
+	? P
+	: never;
+type MYPT1 = MyParameters<(str: string) => void>;
+// type MYPT1 = [str: string]
+
+/* 12. ConstructorParameters<Type> 从构造函数类型的类型中构造一个元组或数组类型。
+它会生成一个包含所有参数类型的元组类型（如果 Type 不是函数类型，则生成一个永远为 never 的类型）。 */
+type CPT0 = ConstructorParameters<ErrorConstructor>;
+// type CPT0 = [message?: string | undefined]
+
+type CPT1 = ConstructorParameters<FunctionConstructor>;
+// type CPT1 = string[]
+
+type CPT2 = ConstructorParameters<RegExpConstructor>;
+// type CPT2 = [pattern: string | RegExp, flags?: string | undefined]
+
+class CP {
+	constructor(a: number, b: string) {
+		console.log("cp class constructor");
+	}
+}
+type CPType = typeof CP;
+type CPT3 = ConstructorParameters<CPType>;
+// type CPT3 = [a: number, b: string]
+
+type MyConstructorParameters<T extends abstract new (...args: any[]) => any> =
+	T extends abstract new (...args: infer P) => any ? P : never;
+type CPT4 = MyConstructorParameters<CPType>;
+// type CPT3 = ConstructorParameters<CPType>;
+
+/* 13. ReturnType<Type> 构造一个类型，该类型由函数Type的返回类型组成。 */
+declare function rtF1(): { a: number; b: string };
+type RTT0 = ReturnType<() => string>;
+// type RTT0 = string
+type RTT1 = ReturnType<(str: string) => void>;
+// type RTT1 = void
+type RTT2 = ReturnType<<T>() => T>;
+// type RTT2 = unknown
+
+declare function ff2<T>(): T;
+function ff1<T>(a: T): T {
+	// 函数实现逻辑
+	return a;
+}
+
+type RTT3 = ReturnType<<T extends U, U extends Array<number>>() => T>;
+// type RTT3 = number[]
+type RTT4 = ReturnType<typeof rtF1>;
+// type RTT4 = {
+// 	a: number;
+// 	b: string;
+// }
+type RTT5 = ReturnType<any>;
+// type RTT5 = any
+
+type RTT6 = ReturnType<never>;
+// type RTT6 = never
+
+// type RTT7 = ReturnType<string>;
+// 类型“string”不满足约束“(...args: any) => any”。
+
+type MyReturnType<T extends (...args: any) => any> = T extends (
+	...args: any
+) => infer P
+	? P
+	: any;
+type RTT8 = MyReturnType<<T extends U, U extends Array<number>>() => T>;
+// type RTT8 = number[]
+
+/* 14. InstanceType<Type> 用于获取类构造函数实例类型。它接受一个类构造函数类型作为参数，并返回该类的实例类型。 */
+class ITC {
+	x = 0;
+	y = 0;
+	public a = 123;
+	private z = 123;
+	protected b = 222;
+	static c = 111;
+	// abstract fn1(): void; // 抽象方法只能出现在抽象类中
+}
+
+abstract class ITC2 {
+	x = 0;
+	y = 0;
+	public a = 123;
+	private z = 123;
+	protected b = 222;
+	static c = 111;
+	abstract fn1(): void;
+	fn2() {}
+}
+type ITT0 = InstanceType<typeof ITC>;
+// type ITT0 = ITC
+type ITT1 = InstanceType<any>;
+// type ITT0 = ITC
+type ITT2 = InstanceType<never>;
+// type ITT2 = never
+// type IIT3 = InstanceType<string>;
+// 类型“string”不满足约束“abstract new (...args: any) => any”。
+// type ITT5 = InstanceType<ITC2>;
+// 类型“ITC2”不满足约束“abstract new (...args: any) => any”。
+//   类型“ITC2”提供的内容与签名“new (...args: any): any”不匹配。
+
+type MyInstanceType<T extends abstract new (...args: any) => any> =
+	T extends abstract new (...args: any) => infer P ? P : any;
+type ITT6 = MyInstanceType<typeof ITC>;
+// type ITT6 = ITC
+
+/* 15. ThisParameterType<Type> 提取**函数**类型中 this 参数的类型 */
+
+/* 16. OmitThisParameter<Type> */
+/* 17. ThisType<Type> */
+/* 18. Uppercase<StringType> 将输入类型 T 的名称设为大写。 */
+type UCT0 = Uppercase<"Abc1哈哈">;
+// type UCT0 = "ABC1哈哈"
+/* 19. Lowercase<StringType> 将输入类型 T 的名称设为小写。 */
+type LCT0 = Lowercase<"Abc1哈哈">;
+// type LCT0 = "abc1哈哈"
+/* 20. Capitalize<StringType> 输入类型 T 的首字母大写。*/
+type CLT0 = Capitalize<"313bbcda">;
+// type CLT0 = "313bbcda"
+type CLT1 = Capitalize<"bcada">;
+// type CLT1 = "Bcada"
+/* 21. Uncapitalize<StringType> 输入类型 T 的首字母小写。 */
+type UCLT1 = Uncapitalize<"Acada">;
+// type UCLT1 = "acada"
+
+// 手动实现 Uppercase 或者 Uncapitalize
+// 前置条件 infer的妙用 获取字符串的位置
+type AString = "ABC";
+type GetInitialType<S extends string> = S extends `${infer I}${infer Rest}`
+	? I
+	: any;
+type GetExcludeInitialType<S extends string> =
+	S extends `${infer I}${infer Rest}` ? Rest : any;
+type GetInitialTest = GetInitialType<AString>;
+// type GetInitialTest = "A"
+type GetExcludeInitialTest = GetExcludeInitialType<AString>;
+// type GetExcludeInitialTest = "BC"
