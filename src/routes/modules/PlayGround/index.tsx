@@ -7,6 +7,7 @@ import Iterator from "@VIEWS/MyPlayGround/Iterator";
 import BlobBasic from "@VIEWS/MyPlayGround/BlobBasic";
 import HandWritten from "@/views/MyPlayGround/HandWritten";
 import DataStructures from "@/views/MyPlayGround/DataStructuresAndAlgorithm";
+import { Interval } from "@/views/MyPlayGround/Interval";
 
 const router: RouteObject[] = [
 	{
@@ -16,7 +17,7 @@ const router: RouteObject[] = [
 		////绝对不能使用 element: <Navigate to="reduxTest" />来重定向子路由,会导致异常错误发生
 		children: [
 			{
-				//index: true, // index 属性来确定 children下的默认子路由,
+				index: true, // index 属性来确定 children下的默认子路由,
 				path: "reduxTest",
 				element: <ReduxTest />,
 			},
@@ -36,12 +37,16 @@ const router: RouteObject[] = [
 				path: "dataStructureAndAlgorithm",
 				element: <DataStructures />,
 			},
+			{
+				path: "interval",
+				element: <Interval />,
+			},
 		],
 	},
-	{
-		path: "/playground",
-		element: <Navigate to="/playground/reduxTest" />,
-	},
+	// {
+	// 	path: "/playground",
+	// 	element: <Navigate to="/playground/reduxTest" />,
+	// },
 ];
 
 export default router;
