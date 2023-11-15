@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-type MIconProps = {
+interface MIconProps {
 	type: string;
-};
+}
 
 const MIcon: FC<MIconProps> = ({ type }) => {
 	return <i className={`kj kj-${type}`} />;

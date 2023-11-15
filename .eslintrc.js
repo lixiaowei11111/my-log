@@ -24,14 +24,14 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		"eslint:recommended", //使用 ESLint 推荐的规则。
-		"plugin:@typescript-eslint/recommended", //使用 TypeScript ESLint 推荐的规则。
-		"plugin:react/recommended", // 使用 React ESLint 推荐的规则。
-		"plugin:react-hooks/recommended",
-		"prettier",
-		"plugin:prettier/recommended", //使用 Prettier 推荐的规则。
-		// 'prettier/@typescript-eslint',// 解决 Prettier 和 TypeScript ESLint 规则之间的冲突。其本身被融合到 'prettier'中
-	],
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "prettier",
+        "plugin:prettier/recommended",
+        "plugin:storybook/recommended"
+    ],
 	plugins: ["@typescript-eslint", "react", "prettier", "babel"],
 	rules: {
 		// ESLint Rules
@@ -42,11 +42,13 @@ module.exports = {
 		"@typescript-eslint/no-explicit-any": 0,
 		"@typescript-eslint/no-unused-vars": [0, { argsIgnorePattern: "^_" }],
 		"@typescript-eslint/no-non-null-assertion": 0, // 非空断言
+		"@typescript-eslint/consistent-type-definitions": "error",
 		// 启用 TypeScript 下的未使用变量规则，忽略以 _ 开头的变量。
 
 		// React Rules
 		"react/prop-types": 0, // 关闭对 PropTypes 的检查。
 		"react/react-in-jsx-scope": 0, // react18 中 jsx语法不再需要引入react
+		"react/self-closing-comp": "error", // 自闭合标签
 
 		// Prettier Rules
 		"prettier/prettier": 2, // 将 Prettier 错误视为 ESLint 错误。

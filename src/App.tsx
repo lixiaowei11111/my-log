@@ -13,7 +13,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<ConfigProvider locale={zhCN}>
-				<Router></Router>
+				<Router />
 			</ConfigProvider>
 		</BrowserRouter>
 	);

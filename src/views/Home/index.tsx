@@ -21,7 +21,7 @@ const Home = () => {
 	return (
 		<>
 			<DateRangePicker />
-			<ClipboardEventFC></ClipboardEventFC>
+			<ClipboardEventFC />
 			<span>Home Component</span>
 			<CounterByUserReducer />
 			<MouseMoveEventFC />

@@ -1,7 +1,7 @@
-export type ReduxAction = {
+export interface ReduxAction {
 	type: string;
 	payload?: any;
-};
+}
 
 export interface CounterState {
 	val: number;
