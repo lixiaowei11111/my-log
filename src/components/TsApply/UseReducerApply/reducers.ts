@@ -1,6 +1,6 @@
 import { COUNTERENUM } from "./actions";
 import type { COUNTERACTIONTYPE } from "./actions";
-
+import { DependencyList } from "react";
 const initialState = { count: 0 };
 
 const counterReducer = (

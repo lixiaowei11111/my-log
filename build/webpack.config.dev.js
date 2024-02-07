@@ -13,6 +13,11 @@ const devServer = {
 	server: {
 		type: "https",
 	},
+	https: {
+		ca: path.join(__dirname, "../ssl/CA/rootCA.pem"),
+		key: path.join(__dirname, "../ssl/key.pem"),
+		cert: path.join(__dirname, "../ssl/cert.pem"),
+	},
 	host: "0.0.0.0", // 服务器 0.0.0.0是环回地址 相当于localhost和局域网IP都可以访问,localhost===127.0.0.1只能被本地访问
 	port: "9999",
 	// contentBase: path.join(__dirname, "../public"),
@@ -40,6 +45,9 @@ const devServer = {
 		},
 	},
 	// inline: false, // webpack 4.0 命令行不识别 --inline ,且默认开启
+	proxy: {
+		"/api": "http://localhost:5000",
+	},
 	// proxy: {
 	// 	'/api': {
 	// 		target: '10.415.21.19', // 测试环境或者线上的host IP //一个前往请求/api/users现在会将请求代理到http://localhost:3000/api/users。

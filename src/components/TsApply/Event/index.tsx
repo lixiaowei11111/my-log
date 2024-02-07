@@ -43,6 +43,7 @@ export const ClickEvent: FC = () => {
 };
 
 // 002_ change事件 : ChangeEvent<T=Element> 和 ChangeEventHandler<T=Element>
+// ChangeEventHnadler 用于定义 onChange函数 ChangeEvent 用于定义event这个参数
 export const ChangeEventFC: FC = () => {
 	const handleSelectChange: ChangeEventHandler<HTMLSelectElement> = e => {
 		const value = e.target.value;
