@@ -8,6 +8,7 @@ import BlobBasic from "@VIEWS/MyPlayGround/BlobBasic";
 import HandWritten from "@/views/MyPlayGround/HandWritten";
 import DataStructures from "@/views/MyPlayGround/DataStructuresAndAlgorithm";
 import { Interval } from "@/views/MyPlayGround/Interval";
+import Zustand from "@/views/MyPlayGround/Zustand";
 
 const router: RouteObject[] = [
 	{
@@ -40,6 +41,10 @@ const router: RouteObject[] = [
 			{
 				path: "interval",
 				element: <Interval />,
+			},
+			{
+				path: "zustand",
+				element: <Zustand />,
 			},
 		],
 	},

@@ -137,3 +137,12 @@ const AGB: React.FC = () => {
 
 const jsx = <div>jsx</div>;
 const ele = React.createElement("div", null, "hello");
+
+const a = {
+	b: 1,
+	c: "1",
+};
+
+type C = typeof a & {
+	d: number;
+};
