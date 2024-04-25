@@ -9,6 +9,7 @@ import HandWritten from "@/views/MyPlayGround/HandWritten";
 import DataStructures from "@/views/MyPlayGround/DataStructuresAndAlgorithm";
 import { Interval } from "@/views/MyPlayGround/Interval";
 import Zustand from "@/views/MyPlayGround/Zustand";
+import SyncExternalStore from "@/views/MyPlayGround/NewHooks/SyncExternalStore";
 
 const router: RouteObject[] = [
 	{
@@ -45,6 +46,15 @@ const router: RouteObject[] = [
 			{
 				path: "zustand",
 				element: <Zustand />,
+			},
+			{
+				path: "hooks",
+				children: [
+					{
+						path: "syncExternalStore",
+						element: <SyncExternalStore />,
+					},
+				],
 			},
 		],
 	},
