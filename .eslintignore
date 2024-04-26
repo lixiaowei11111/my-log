@@ -18,3 +18,5 @@ webpack
 # .postcss.config.js
 # .commitlint.config.js
 app.js
+iterator.js
+web/**.*js

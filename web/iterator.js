@@ -227,7 +227,7 @@ class Foo1 {
 }
 
 // yield可以暂停Generator`function*`函数,而yield的返回值由next函数参数来决定
-function* test_generator(): any {
+function* test_generator() {
 	console.log("不调用next不执行");
 	const a = yield 2; // yield的返回值由下一次生成器函数调用next函数参数决定的
 	console.log(a);
@@ -262,13 +262,13 @@ function doSomethingAsync() {
 	});
 }
 
-function* generator(): any {
+function* generator() {
 	const result = yield doSomethingAsync();
 	console.log(result);
 }
 
 const gen = generator();
-gen.next().value.then((result: any) => gen.next(result));
+gen.next().value.then(result => gen.next(result));
 
 function* generatorFn() {
 	// for (let i of [1, 2, 3]) {
@@ -286,3 +286,85 @@ for (const i of generatorInstance) {
 	console.log(i);
 	// 依次打印 2,3而不是1,2,3
 }
+
+// 对 class 实现一个迭代器
+/* 
+在 Rust 中，迭代器可以被收集（collect）是因为 Rust 的标准库中定义了一个叫做 FromIterator 的 trait，它的作用是从一个迭代器创建一个集合。collect 方法就是使用这个 trait 来工作的。当你调用 collect 方法时，Rust 的类型推断系统会根据上下文来决定应该使用哪个 FromIterator 的实现。
+在你的例子中，HashMap 有一个 FromIterator 的实现，所以你可以从一个迭代器收集元素到 HashMap 中。
+JavaScript 中没有类似的概念，但是你可以使用 Array.from 或者扩展运算符（...）来从一个迭代器创建一个数组。
+Rust 的迭代器确实是显式的，你需要调用 iter 或者 into_iter 方法来获取一个迭代器。这是因为 Rust 的设计者选择了这样的设计，他们认为这样可以让代码更清晰，更容易理解。
+JavaScript 的迭代器是隐式的，你可以直接在 for...of 循环或者其他需要迭代器的地方使用一个可迭代对象。这是因为 JavaScript 的设计者选择了这样的设计，他们认为这样可以让代码更简洁，更容易编写。
+
+*/
+class YearList {
+	constructor(start = 2023, end = 2028) {
+		this.start = start;
+		this.end = end;
+		this.nextPoint = start;
+	}
+
+	[Symbol.iterator]() {
+		return this; // this是YearList的实例,而实例的原型链上有next方法,for...of会自动查找原型链上的next方法
+	}
+
+	next() {
+		if (this.nextPoint <= this.end) {
+			// next方法挂载在 实例上,可以获取到this.end
+			const result = { value: this.nextPoint, done: false };
+			this.nextPoint++;
+			return result;
+		}
+		return { value: undefined, done: true };
+	}
+}
+
+const yearList = new YearList();
+
+for (const y of yearList) {
+	console.log(y, "y");
+}
+
+const arr3 = Array.from(yearList); //为什么是空数组
+/*
+	记住这个特性: **当一个对象需要被迭代的时候（比如被置入一个 for...of 循环时），首先，会不带参数调用它的 @@iterator 方法，然后使用此方法返回的迭代器获得要迭代的值。**
+
+	因为this.nextPoint只在初始化的时候被赋值了(`this.nextPoint=this.start`),
+	当 for...of执行完成以后,this.nextPoint已经=this.end了
+	继续迭代时,Array.from遍历时,初次遍历会无参数调用`[Symbol.iterator]`方法,但是this.nextPoint这时还是等于this.end所以已经不符合条件走不下去,直接退出遍历了,
+	解决办法就是在初次调用`[Symbol.iterator]`方法时,都给它重新赋值即可
+	 */
+
+class YearListA {
+	constructor(start = 2023, end = 2028) {
+		this.start = start;
+		this.end = end;
+	}
+
+	[Symbol.iterator]() {
+		let nextPoint = this.start; //每次开始迭代时,都重新赋值
+		let end = this.end;
+		return {
+			next() {
+				console.log(this, "this"); //next是普通函数不是挂载在类型下面的公共函数了,现在的this是[Symbol.iterator]方法返回的匿名对象
+				// if (nextPoint <= this.end) { 不能用this.end,因为next函数里面的this是包裹这个next方法的匿名对象
+				if (nextPoint <= end) {
+					const result = { value: nextPoint, done: false };
+					nextPoint++;
+					return result;
+				}
+				return { value: undefined, done: true };
+			},
+		};
+	}
+}
+
+const yearList2 = new YearListA();
+
+for (const y of yearList2) {
+	console.log(y, "y");
+}
+
+// Array.from 或者 扩展运算符`...`实际也是用于遍历可迭代对象的,并收集成一个数组的,相当于`rust`中的`这一句 `
+console.log(Array.from(yearList2));
+console.log({ ...yearList2 });
+console.log([...yearList2]);
