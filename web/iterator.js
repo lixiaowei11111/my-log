@@ -192,7 +192,9 @@
 						console.log(value);
 					}
 				```
-
+# rust中的迭代器和js对比
++ JS 和 rust的迭代器都是惰性的
++ rust中的迭代器是惰性, 手动使用JS的yield + `Generator`函数非常相似,相当于一个对象返回 `iterator`,都可以手动调用next方法来迭代,同时也能被其他方法迭代
 */
 
 // #ts-ignore
@@ -368,3 +370,51 @@ for (const y of yearList2) {
 console.log(Array.from(yearList2));
 console.log({ ...yearList2 });
 console.log([...yearList2]);
+
+// JS中使用迭代器
+function* countUpTo(n) {
+	for (let i = 1; i <= n; i++) {
+		yield i;
+	}
+}
+
+const iterator = countUpTo(5);
+console.log(iterator.next().value); // 1
+console.log(iterator.next().value); // 2
+// ...以此类推
+
+// rust中使用迭代器
+
+/* 
+struct CountUpTo {
+    max: u32,
+    count: u32,
+}
+
+impl CountUpTo {
+    fn new(max: u32) -> CountUpTo {
+        CountUpTo { max, count: 0 }
+    }
+}
+
+impl Iterator for CountUpTo {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.count += 1;
+        if self.count <= self.max {
+            Some(self.count)
+        } else {
+            None
+        }
+    }
+}
+
+fn main() {
+    let mut counter = CountUpTo::new(5);
+    println!("{}", counter.next().unwrap()); // 1
+    println!("{}", counter.next().unwrap()); // 2
+    // ...以此类推
+}
+
+*/
