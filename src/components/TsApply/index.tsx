@@ -4,6 +4,7 @@ import React, {
 	useState,
 	useRef,
 	useEffect,
+	PropsWithChildren,
 } from "react";
 
 interface IProps {
@@ -130,6 +131,19 @@ const AGB: React.FC = () => {
 		</>
 	);
 };
+
+const Ybb: React.FC<PropsWithChildren> = ({ children }) => {
+	return <>{children}</>;
+};
+
+const Ybb2: React.FC<PropsWithChildren> = function ({ children }) {
+	return <>{children}</>;
+};
+
+function Ybb3(props: PropsWithChildren): React.FC {
+	const Ybb4 = () => <>{props.children}</>;
+	return Ybb4;
+}
 
 /**6. useContext ===> UseContextApply */
 
