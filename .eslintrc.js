@@ -24,15 +24,15 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "prettier",
-        "plugin:prettier/recommended",
-        "plugin:storybook/recommended"
-    ],
-	plugins: ["@typescript-eslint", "react", "prettier", "babel"],
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:storybook/recommended",
+	],
+	plugins: ["@typescript-eslint", "react", "prettier", "babel", "promise"],
 	rules: {
 		// ESLint Rules
 		"no-console": 0, // 关闭对 console 使用的警告。
@@ -52,6 +52,8 @@ module.exports = {
 
 		// Prettier Rules
 		"prettier/prettier": 2, // 将 Prettier 错误视为 ESLint 错误。
+		// promise
+		"promise/no-nesting": "error", // 禁止嵌套的 Promise
 	},
 	overrides: [
 		{
